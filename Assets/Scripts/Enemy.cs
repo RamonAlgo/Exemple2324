@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private float _vel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Vector3 posJugador = GameObject.Find("Player").transform.position;
-
         Vector3 direccioCapAJugador = (posJugador - transform.position).normalized;
-
         transform.position += direccioCapAJugador * (_vel * Time.deltaTime);
     }
 
@@ -32,7 +31,7 @@ public class Enemy : MonoBehaviour
         if (objecteTocat.gameObject.name == "Player")
         {
             Destroy(gameObject);
+            FindObjectOfType<GameController>().DecrementarEscuts();
         }
     }
-
 }
